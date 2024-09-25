@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soft debut Test 2</title>
+  <script>
+    function validateForm(event) {
+      const EmpNum = document.getElementById('EmpNum').value;
+      const EmpName = document.getElementById('EmpName').value;
+      const Position = document.getElementById('Position').value;
+
+      if (!EmpNum) {
+        alert('คุณยังไม่ได้กรอกรหัสพนักงาน');
+        event.preventDefault();
+        return false;
+      }
+
+      if (!EmpName) {
+        alert('คุณยังไม่ได้กรอกชื่อพนักงาน');
+        event.preventDefault();
+        return false;
+      }
+
+      if (!Position) {
+        alert('คุณยังไม่ได้เลือกตำแหน่ง');
+        event.preventDefault();
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h4>Insert New Employee</h4>
+  <form action="/employee/create" method="POST" novalidate="novalidate" onsubmit="return validateForm(event)">
+    <label for="employee-number">รหัสพนักงาน:</label>
+    <input type="text" id="EmpNum" name="EmpNum" required><br><br>
+
+    <label for="employee-name">ชื่อพนักงาน:</label>
+    <input type="text" id="EmpName" name="EmpName" required><br><br>
+
+    <label for="employee-position">ตำแหน่ง:</label>
+    <select name="Position" id="Position">
+      <option value=""></option>
+      <option value="Manaing Director">Manaing Director</option>
+      <option value="Manager">Manager</option>
+      <option value="Supervisor">Supervisor</option>
+      <option value="Clerk">Clerk</option>
+      <option value="Salesman">Salesman</option>
+    </select>
+    <br/>
+    <br/>
+    <button type="submit">บันทึก</button>
+  </form>
+</body>
+</html>
